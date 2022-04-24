@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="./script.js" defer></script> -->
+  </head>
+  <body>
+    <ul>
+      <li>title 1</li>
+      <li class="start-here">title 2</li>
+      <li>
+        <ul>
+          <li>sub title 1</li>
+          <li>sub title 2</li>
+          <li>sub title 3</li>
+        </ul>
+      </li>
+      <li>title 3</li>
+    </ul>
+    <div>
+      <p>Hello World!</p>
+    </div>
+  </body>
+  <script>
+    const startHere = document.querySelector(".start-here");
+    // 1. Change the text from “title 2” to “main title”
+    startHere.innerText = "main title";
+    // 2. Add another sub title with the text “sub title 4”
+    const newLi = document.createElement("li");
+    newLi.innerText = "sub title 4";
+    const addTo = document.querySelector("ul li ul");
+    addTo.appendChild(newLi);
+    // 3. Delete the last <li> element from the list.
+    // const toDelete = document.querySelectorAll("li");
+    // toDelete[7].remove();
+    // commented two lines above is another approach but the following always guarantees last child
+    const toDelete = document.querySelector("ul");
+    toDelete.lastElementChild.remove();
+    // 4. Change the <title> element text to “Master Of The Dom”.
+    document.querySelector("html title").innerText = "Master Of The Dom";
+    // 5. Change the text of the <p> element ot something else of your
+    document.querySelector("div p").innerText = "Bye World!!!!";
+  </script>
+</html>
