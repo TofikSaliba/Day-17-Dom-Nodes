@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" / >
+    <meta
+      name="viewport"
+      content="width=device-width,
+initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Header</h1>
+    <p>Paragraph</p>
+    <a href="#">link</a>
+    <img src="" alt="" />
+    <div class="x">Div with a class</div>
+    <div id="y">Div with an id</div>
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+  </body>
+  <script>
+    // not using querySelector
+    const h1 = document.getElementsByTagName("h1");
+    const p = document.getElementsByTagName("p");
+    const a = document.getElementsByTagName("a");
+    const img = document.getElementsByTagName("img");
+    const div = document.getElementsByTagName("div");
+    const divClass = div[0];
+    const divId = div[1];
+    const inputs = document.getElementsByTagName("input");
+    const input1 = inputs[0];
+    const input2 = inputs[1];
+    const input3 = inputs[2];
+
+    // using querySelector
+    const h1Query = document.querySelector("h1");
+    const pQuery = document.querySelector("p");
+    const aQuery = document.querySelector("a");
+    const imgQuery = document.querySelector("img");
+    const divQuery = document.querySelectorAll("div");
+    const divClassQuery = divQuery[0];
+    const divIdQuery = divQuery[1];
+    const inputsQuery = document.querySelectorAll("input");
+    const input1Query = inputsQuery[0];
+    const input2Query = inputsQuery[1];
+    const input3Query = inputsQuery[2];
+
+    // number 3. above i have both variables selecting inputs, one without querySelector called => inputs, and other with querySelector called => inputsQuery
+    console.log("Using querySelector");
+    inputsQuery.forEach((input) => console.dir(input));
+
+    // the getElementsByTagName array like object cant use forEach, so im spreading it inside new array variable.
+    console.log("Using getElementsByTagName");
+    const inputsArr = [...inputs];
+    inputsArr.forEach((input) => console.dir(input));
+  </script>
+</html>
