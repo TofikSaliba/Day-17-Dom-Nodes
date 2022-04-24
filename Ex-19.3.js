@@ -6,7 +6,7 @@ inputs[0].focus();
 
 //! input by pasting code block
 inputs[0].addEventListener("paste", function (event) {
-  let paste = event.clipboardData.getData("text");
+  let paste = (event.clipboardData || window.clipboardData).getData("text");
 
   //! check paste length
   if (paste.length !== 6) {
