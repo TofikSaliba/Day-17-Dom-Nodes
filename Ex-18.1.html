@@ -22,7 +22,7 @@ initial-scale=1.0"
     <input type="text" />
   </body>
   <script>
-    // not using querySelector
+    // 1. not using querySelector
     const h1 = document.getElementsByTagName("h1");
     const p = document.getElementsByTagName("p");
     const a = document.getElementsByTagName("a");
@@ -35,7 +35,7 @@ initial-scale=1.0"
     const input2 = inputs[1];
     const input3 = inputs[2];
 
-    // using querySelector
+    // 2. using querySelector
     const h1Query = document.querySelector("h1");
     const pQuery = document.querySelector("p");
     const aQuery = document.querySelector("a");
@@ -48,7 +48,7 @@ initial-scale=1.0"
     const input2Query = inputsQuery[1];
     const input3Query = inputsQuery[2];
 
-    // number 3. above i have both variables selecting inputs, one without querySelector called => inputs, and other with querySelector called => inputsQuery
+    // 3. above i have both variables selecting inputs, one without querySelector called => inputs, and other with querySelector called => inputsQuery
     console.log("Using querySelector");
     inputsQuery.forEach((input) => console.dir(input));
 
