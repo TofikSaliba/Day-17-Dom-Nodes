@@ -15,46 +15,27 @@ inputs[0].addEventListener("paste", function (event) {
       resetInput();
     }, 0);
   } else {
-    setTimeout(() => {
-      for (let i = 0; i < 6; i++) {
-        inputs[i].value = paste[i];
-      }
-      inputs[5].focus();
-      //! check if its correct code
-      if (checkInput()) {
-        msg.innerText = "";
-        setTimeout(() => {
-          resetInput();
-        }, 1000);
-      } else {
-        msg.innerText = "Code Does Not Match";
-      }
-    }, 0);
+    //! fill the input boxes with paste letters
+    for (let i = 0; i < 6; i++) {
+      inputs[i].value = paste[i];
+    }
+    inputs[5].focus();
+    checkInput();
   }
 });
 
 //! regular typing input code block
 for (let i = 0; i < 6; i++) {
   //! this if purpose is to check when i reach the last input box so i validate the input
-  if (i < inputs.length - 1) {
-    //! event to move focus from box to box
-    inputs[i].addEventListener("keyup", () => {
-      if (inputs[i].value.length === 1) {
-        inputs[i + 1].focus();
-        inputs[i + 1].value = "";
-      }
-    });
-  } else {
-    inputs[i].addEventListener("keyup", () => {
-      //! validate input after last box input
-      if (checkInput()) {
-        resetInput();
-        msg.innerText = "";
-      } else {
-        msg.innerText = "Code Does Not Match";
-      }
-    });
-  }
+  //! event to move focus from box to box
+  inputs[i].addEventListener("keyup", () => {
+    if (i < 5 && inputs[i].value.length === 1) {
+      inputs[i + 1].focus();
+      inputs[i + 1].value = "";
+    } else if (i === 5) {
+      checkInput();
+    }
+  });
 }
 
 //! function to check input validity
@@ -67,8 +48,13 @@ function checkInput() {
     inputs[4].value === "1" &&
     inputs[5].value === "0"
   ) {
+    msg.innerText = "";
+    setTimeout(() => {
+      resetInput();
+    }, 300);
     return true;
   }
+  msg.innerText = "Code Does Not Match";
   return false;
 }
 
